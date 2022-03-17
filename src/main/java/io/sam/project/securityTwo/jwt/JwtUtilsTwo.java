@@ -4,6 +4,7 @@ import io.jsonwebtoken.*;
 import io.sam.project.models.User;
 import io.sam.project.security.services.UserDetailsImpl;
 import lombok.extern.slf4j.Slf4j;
+import lombok.val;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseCookie;
 import org.springframework.stereotype.Component;
@@ -27,27 +28,14 @@ public class JwtUtilsTwo {
     @Value("${sam.app.jwtCookieName}")
     private String jwtCookie;
 
-
-//    public String getUserNameFromJwtToken(String token) {
-//        return Jwts.parser().setSigningKey(jwtSecret).parseClaimsJws(token).getBody().getSubject();
-//    }
-
     public String generateTokenFromUsername(UserDetailsImpl user) {
         return Jwts.builder()
-                .setSubject(format("%s,%s", user.getId(), user.getUsername()))
+                .setSubject(user.getUsername())
+                .claim("authorities", user.getAuthorities())
                 .setIssuedAt(new Date())
                 .setExpiration(new Date((new Date()).getTime() + jwtExpirationMs))
                 .signWith(SignatureAlgorithm.HS512, jwtSecret)
                 .compact();
-    }
-
-    public String getUserId(String token) {
-        Claims claims = Jwts.parser()
-                .setSigningKey(jwtSecret)
-                .parseClaimsJws(token)
-                .getBody();
-
-        return claims.getSubject().split(",")[0];
     }
 
     public String getUsername(String token) {
@@ -56,7 +44,7 @@ public class JwtUtilsTwo {
                 .parseClaimsJws(token)
                 .getBody();
 
-        return claims.getSubject().split(",")[1];
+        return claims.getSubject();
     }
 
     public Date getExpirationDate(String token) {
@@ -70,6 +58,7 @@ public class JwtUtilsTwo {
 
 
     public boolean validateJwtToken(String authToken) {
+        System.out.println(authToken);
         try {
             Jwts.parser().setSigningKey(jwtSecret).parseClaimsJws(authToken);
             return true;

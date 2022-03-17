@@ -14,13 +14,14 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/item")
 @RequiredArgsConstructor
-public class ItemController {
+public class ItemController implements SecuredRestController {
 
     private final ItemService itemService;
 
     @GetMapping
     @PreAuthorize("hasRole('USER') or hasRole('MODERATOR') or hasRole('ADMIN')")
     public ResponseEntity<List<ItemDTO>> getAllItems() {
+        System.out.println(itemService.findAll());
         return ResponseEntity.ok(itemService.findAll());
     }
 

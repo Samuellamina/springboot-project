@@ -39,14 +39,17 @@ public class AuthTokenFilterTwo extends OncePerRequestFilter {
 
             final String token = header.split(" ")[1].trim();
 
-            if (!jwtUtils.validateJwtToken(token)) {
+            if (jwtUtils.validateJwtToken(token)) {
                 String username = jwtUtils.getUsername(token);
                 UserDetails userDetails = userDetailsService.loadUserByUsername(username);
+
+                System.out.println(username);
 
                 UsernamePasswordAuthenticationToken authentication =
                         new UsernamePasswordAuthenticationToken(
                                 userDetails, null, userDetails.getAuthorities()
                         );
+
 
                 authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
                 SecurityContextHolder.getContext().setAuthentication(authentication);

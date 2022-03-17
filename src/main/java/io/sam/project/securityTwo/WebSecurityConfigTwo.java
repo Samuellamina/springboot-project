@@ -1,9 +1,12 @@
-package io.sam.project.security;
+package io.sam.project.securityTwo;
 
 import io.sam.project.security.jwt.AuthEntryPointJwt;
 import io.sam.project.security.jwt.AuthTokenFilter;
 import io.sam.project.security.services.UserDetailsServiceImpl;
-import org.springframework.beans.factory.annotation.Autowired;
+import io.sam.project.securityTwo.jwt.AuthEntryPointJwtTwo;
+import io.sam.project.securityTwo.jwt.AuthTokenFilterTwo;
+import io.sam.project.securityTwo.services.UserDetailsServiceImplTwo;
+import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
@@ -19,25 +22,25 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 import static org.springframework.security.config.http.SessionCreationPolicy.STATELESS;
-@Order(2)
+
+@Order(1)
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
-public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
-    @Autowired
-    UserDetailsServiceImpl userDetailsService;
+@RequiredArgsConstructor
+public class WebSecurityConfigTwo extends WebSecurityConfigurerAdapter {
 
-    @Autowired
-    private AuthEntryPointJwt unauthorizedHandler;
+    private final UserDetailsServiceImplTwo userDetailsService;
+    private final AuthEntryPointJwtTwo unauthorizedHandler;
 
     @Bean
-    public AuthTokenFilter authenticationJwtTokenFilter() {
-        return new AuthTokenFilter();
+    public AuthTokenFilterTwo authenticationJwtTokenFilterTwo() {
+        return new AuthTokenFilterTwo();
     }
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
+        auth.userDetailsService(userDetailsService).passwordEncoder(passwordEncoderTwo());
     }
 
     @Override
@@ -46,10 +49,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .exceptionHandling().authenticationEntryPoint(unauthorizedHandler)
                 .and()
                 .sessionManagement().sessionCreationPolicy(STATELESS).and()
-                .authorizeRequests().antMatchers("/api/auth/**").permitAll()
+                .authorizeRequests().antMatchers("/api/auth2/**").permitAll()
                 .antMatchers("/api/test/**").permitAll()
                 .anyRequest().authenticated();
-        http.addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);
+        http.addFilterBefore(authenticationJwtTokenFilterTwo(), UsernamePasswordAuthenticationFilter.class);
     }
 
     @Override
@@ -64,7 +67,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     @Bean
-    public PasswordEncoder passwordEncoder() {
+    public PasswordEncoder passwordEncoderTwo() {
         return new BCryptPasswordEncoder();
     }
 }

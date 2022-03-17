@@ -1,4 +1,4 @@
-package io.sam.project.securityTwo.services;
+package io.sam.project.securityAlt.services;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import io.sam.project.models.User;

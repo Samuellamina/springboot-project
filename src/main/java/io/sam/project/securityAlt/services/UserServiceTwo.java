@@ -1,4 +1,4 @@
-package io.sam.project.securityTwo.services;
+package io.sam.project.securityAlt.services;
 
 import io.sam.project.models.ERole;
 import io.sam.project.models.Role;
@@ -9,12 +9,10 @@ import io.sam.project.payload.response.MessageResponse;
 import io.sam.project.payload.response.UserInfoResponse;
 import io.sam.project.repository.RoleRepository;
 import io.sam.project.repository.UserRepository;
-import io.sam.project.security.jwt.JwtUtils;
 import io.sam.project.security.services.UserDetailsImpl;
-import io.sam.project.securityTwo.jwt.JwtUtilsTwo;
+import io.sam.project.securityAlt.jwt.JwtUtilsTwo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
-import org.springframework.http.ResponseCookie;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;

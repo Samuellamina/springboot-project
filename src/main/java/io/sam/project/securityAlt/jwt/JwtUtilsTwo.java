@@ -1,19 +1,13 @@
-package io.sam.project.securityTwo.jwt;
+package io.sam.project.securityAlt.jwt;
 
 import io.jsonwebtoken.*;
-import io.sam.project.models.User;
 import io.sam.project.security.services.UserDetailsImpl;
 import lombok.extern.slf4j.Slf4j;
-import lombok.val;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.http.ResponseCookie;
 import org.springframework.stereotype.Component;
-import org.springframework.web.util.WebUtils;
 
 import static java.lang.String.format;
 
-import javax.servlet.http.Cookie;
-import javax.servlet.http.HttpServletRequest;
 import java.util.Date;
 
 @Component

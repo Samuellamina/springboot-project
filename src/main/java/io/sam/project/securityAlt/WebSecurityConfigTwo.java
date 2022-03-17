@@ -1,11 +1,8 @@
-package io.sam.project.securityTwo;
+package io.sam.project.securityAlt;
 
-import io.sam.project.security.jwt.AuthEntryPointJwt;
-import io.sam.project.security.jwt.AuthTokenFilter;
-import io.sam.project.security.services.UserDetailsServiceImpl;
-import io.sam.project.securityTwo.jwt.AuthEntryPointJwtTwo;
-import io.sam.project.securityTwo.jwt.AuthTokenFilterTwo;
-import io.sam.project.securityTwo.services.UserDetailsServiceImplTwo;
+import io.sam.project.securityAlt.jwt.AuthEntryPointJwtTwo;
+import io.sam.project.securityAlt.jwt.AuthTokenFilterTwo;
+import io.sam.project.securityAlt.services.UserDetailsServiceImplTwo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

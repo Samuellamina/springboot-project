@@ -1,4 +1,4 @@
-package io.sam.project.securityTwo.services;
+package io.sam.project.securityAlt.services;
 
 import io.sam.project.models.User;
 import io.sam.project.repository.UserRepository;

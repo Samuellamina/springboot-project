@@ -1,6 +1,5 @@
-package io.sam.project.securityTwo.jwt;
+package io.sam.project.securityAlt.jwt;
 
-import io.sam.project.security.jwt.JwtUtils;
 import io.sam.project.security.services.UserDetailsServiceImpl;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,9 +1,8 @@
-package io.sam.project.securityTwo;
+package io.sam.project.securityAlt;
 
 import io.sam.project.payload.request.LoginRequest;
 import io.sam.project.payload.request.SignupRequest;
-import io.sam.project.security.services.UserService;
-import io.sam.project.securityTwo.services.UserServiceTwo;
+import io.sam.project.securityAlt.services.UserServiceTwo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;

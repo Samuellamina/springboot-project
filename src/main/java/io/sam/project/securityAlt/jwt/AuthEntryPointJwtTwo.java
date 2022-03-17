@@ -1,4 +1,4 @@
-package io.sam.project.securityTwo.jwt;
+package io.sam.project.securityAlt.jwt;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.AuthenticationException;

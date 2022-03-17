@@ -2,7 +2,7 @@ package io.sam.project.securityAlt;
 
 import io.sam.project.payload.request.LoginRequest;
 import io.sam.project.payload.request.SignupRequest;
-import io.sam.project.securityAlt.services.UserServiceTwo;
+import io.sam.project.securityAlt.services.UserServiceAlt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,9 +14,9 @@ import javax.validation.Valid;
 
 @RestController
 @RequestMapping("/api/auth2")
-public class AuthControllerTwo {
+public class AlternateAuthController {
     @Autowired
-    private UserServiceTwo userService;
+    private UserServiceAlt userService;
 
     @PostMapping("/signin")
     public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {

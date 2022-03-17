@@ -10,7 +10,7 @@ import io.sam.project.payload.response.UserInfoResponse;
 import io.sam.project.repository.RoleRepository;
 import io.sam.project.repository.UserRepository;
 import io.sam.project.security.services.UserDetailsImpl;
-import io.sam.project.securityAlt.jwt.JwtUtilsTwo;
+import io.sam.project.securityAlt.jwt.JwtUtilsAlt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
@@ -39,7 +39,7 @@ public class UserServiceTwo {
     @Autowired
     private PasswordEncoder passwordEncoder;
     @Autowired
-    private JwtUtilsTwo jwtUtils;
+    private JwtUtilsAlt jwtUtils;
 
     public ResponseEntity<?> signin(LoginRequest loginRequest) {
         Authentication authentication = authenticationManager

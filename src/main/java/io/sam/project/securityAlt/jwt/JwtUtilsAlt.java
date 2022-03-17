@@ -12,7 +12,7 @@ import java.util.Date;
 
 @Component
 @Slf4j
-public class JwtUtilsTwo {
+public class JwtUtilsAlt {
     @Value("${sam.app.jwtSecret}")
     private String jwtSecret;
 

@@ -19,7 +19,7 @@ import java.io.IOException;
 import static org.springframework.util.ObjectUtils.isEmpty;
 
 @Slf4j
-public class AuthTokenFilterTwo extends OncePerRequestFilter {
+public class AuthTokenFilterAlt extends OncePerRequestFilter {
     @Autowired
     private JwtUtilsTwo jwtUtils;
 

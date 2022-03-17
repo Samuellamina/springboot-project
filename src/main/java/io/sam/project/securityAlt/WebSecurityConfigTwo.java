@@ -1,7 +1,7 @@
 package io.sam.project.securityAlt;
 
 import io.sam.project.securityAlt.jwt.AuthEntryPointJwtAlt;
-import io.sam.project.securityAlt.jwt.AuthTokenFilterTwo;
+import io.sam.project.securityAlt.jwt.AuthTokenFilterAlt;
 import io.sam.project.securityAlt.services.UserDetailsServiceImplTwo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
@@ -31,8 +31,8 @@ public class WebSecurityConfigTwo extends WebSecurityConfigurerAdapter {
     private final AuthEntryPointJwtAlt unauthorizedHandler;
 
     @Bean
-    public AuthTokenFilterTwo authenticationJwtTokenFilterTwo() {
-        return new AuthTokenFilterTwo();
+    public AuthTokenFilterAlt authenticationJwtTokenFilterTwo() {
+        return new AuthTokenFilterAlt();
     }
 
     @Override

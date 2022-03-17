@@ -1,4 +1,4 @@
-package io.sam.project.securityAlt;
+package io.sam.project.controllers;
 
 import io.sam.project.payload.request.LoginRequest;
 import io.sam.project.payload.request.SignupRequest;

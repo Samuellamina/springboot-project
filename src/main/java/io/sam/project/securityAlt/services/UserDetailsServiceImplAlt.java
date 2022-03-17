@@ -13,7 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor
-public class UserDetailsServiceImplTwo implements UserDetailsService {
+public class UserDetailsServiceImplAlt implements UserDetailsService {
 
     @Autowired
     private final UserRepository userRepository;

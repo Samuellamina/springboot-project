@@ -2,7 +2,7 @@ package io.sam.project.securityAlt;
 
 import io.sam.project.securityAlt.jwt.AuthEntryPointJwtAlt;
 import io.sam.project.securityAlt.jwt.AuthTokenFilterAlt;
-import io.sam.project.securityAlt.services.UserDetailsServiceImplTwo;
+import io.sam.project.securityAlt.services.UserDetailsServiceImplAlt;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -25,9 +25,9 @@ import static org.springframework.security.config.http.SessionCreationPolicy.STA
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 @RequiredArgsConstructor
-public class WebSecurityConfigTwo extends WebSecurityConfigurerAdapter {
+public class WebSecurityConfigAlt extends WebSecurityConfigurerAdapter {
 
-    private final UserDetailsServiceImplTwo userDetailsService;
+    private final UserDetailsServiceImplAlt userDetailsService;
     private final AuthEntryPointJwtAlt unauthorizedHandler;
 
     @Bean

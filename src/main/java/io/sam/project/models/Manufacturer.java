@@ -13,10 +13,14 @@ public class Manufacturer {
     @Id
     @Column(nullable = false, updatable = false)
     @SequenceGenerator(
-            name = "primary_sequence",
-            sequenceName = "primary_sequence",
+            name = "m_sequence",
+            sequenceName = "m_sequence",
             allocationSize = 1,
-            initialValue = 10000
+            initialValue = 1
+    )
+    @GeneratedValue(
+            strategy = GenerationType.AUTO,
+            generator = "m_sequence"
     )
     private Long id;
 

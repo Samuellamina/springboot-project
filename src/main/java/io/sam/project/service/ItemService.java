@@ -1,8 +1,10 @@
 package io.sam.project.service;
 
 import io.sam.project.models.Item;
+import io.sam.project.models.Manufacturer;
 import io.sam.project.models.dtos.ItemDTO;
 import io.sam.project.repository.ItemRepository;
+import io.sam.project.repository.ManufacturerRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -18,6 +20,7 @@ import static org.springframework.http.HttpStatus.NOT_FOUND;
 @RequiredArgsConstructor
 public class ItemService {
     private final ItemRepository itemRepository;
+    private final ManufacturerRepository manufacturerRepository;
 
     public List<ItemDTO> findAll() {
         return itemRepository.findAll()
@@ -54,6 +57,7 @@ public class ItemService {
         itemDTO.setName(item.getName());
         itemDTO.setDescription(item.getDescription());
         itemDTO.setQuantity(item.getQuantity());
+        itemDTO.setManufacturerItems(item.getManufacturerItems() == null ? null : item.getManufacturerItems().getId());
         return itemDTO;
     }
 
@@ -61,6 +65,11 @@ public class ItemService {
         item.setName(itemDTO.getName());
         item.setDescription(itemDTO.getDescription());
         item.setQuantity(itemDTO.getQuantity());
+        if (itemDTO.getManufacturerItems() != null && (item.getManufacturerItems() == null || !item.getManufacturerItems().getId().equals(itemDTO.getManufacturerItems()))) {
+            final Manufacturer manufacturerItems = manufacturerRepository.findById(itemDTO.getManufacturerItems())
+                    .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "manufacturerItems not found"));
+            item.setManufacturerItems(manufacturerItems);
+        }
         return item;
     }
 }

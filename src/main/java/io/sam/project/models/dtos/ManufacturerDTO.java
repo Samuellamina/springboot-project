@@ -1,18 +1,18 @@
 package io.sam.project.models.dtos;
 
+
 import lombok.Getter;
 import lombok.Setter;
 
+import javax.validation.constraints.Size;
+
 @Getter
 @Setter
-public class ItemDTO {
+public class ManufacturerDTO {
+
     private Long id;
 
+    @Size(max = 255)
     private String name;
 
-    private String description;
-
-    private int quantity;
-
-    private Long manufacturerItems;
 }

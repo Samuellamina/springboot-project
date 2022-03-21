@@ -12,6 +12,7 @@ import io.sam.project.repository.UserRepository;
 import io.sam.project.security.jwt.JwtUtils;
 import io.sam.project.security.services.UserDetailsImpl;
 import io.sam.project.security.services.UserService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseCookie;
@@ -34,9 +35,9 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/auth")
+@RequiredArgsConstructor
 public class AuthController {
-    @Autowired
-    private UserService userService;
+    private final UserService userService;
 
     @PostMapping("/signin")
     public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {

@@ -4,7 +4,6 @@ import io.sam.project.payload.request.LoginRequest;
 import io.sam.project.payload.request.SignupRequest;
 import io.sam.project.securityAlt.services.UserServiceAlt;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -28,10 +27,5 @@ public class AlternateAuthController {
     @PostMapping("/signup")
     public ResponseEntity<?> registerUser(@Valid @RequestBody SignupRequest signUpRequest) {
         return userService.signup(signUpRequest);
-    }
-
-    @PostMapping("/signout")
-    public ResponseEntity<?> logoutUser() {
-        return userService.logout();
     }
 }

@@ -32,4 +32,8 @@ public class Item {
     private String description;
 
     private int quantity;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "manufacturer_items_id")
+    private Manufacturer manufacturerItems;
 }

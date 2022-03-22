@@ -20,9 +20,6 @@ public class JwtUtilsAlt {
     @Value("${sam.app.jwtExpirationMs}")
     private int jwtExpirationMs;
 
-    @Value("${sam.app.jwtCookieName}")
-    private String jwtCookie;
-
     public String generateTokenFromUsername(UserDetailsImpl user) {
         return Jwts.builder()
                 .setSubject(user.getUsername())
@@ -40,15 +37,6 @@ public class JwtUtilsAlt {
                 .getBody();
 
         return claims.getSubject();
-    }
-
-    public Date getExpirationDate(String token) {
-        Claims claims = Jwts.parser()
-                .setSigningKey(jwtSecret)
-                .parseClaimsJws(token)
-                .getBody();
-
-        return claims.getExpiration();
     }
 
 

@@ -72,4 +72,13 @@ public class ItemService {
         }
         return item;
     }
+
+//    private Item.ItemBuilder mapToEntity2(ItemDTO itemDTO, Item item) {
+//        if (itemDTO.getManufacturerItems() != null && (item.getManufacturerItems() == null || !item.getManufacturerItems().getId().equals(itemDTO.getManufacturerItems()))) {
+//            final Manufacturer manufacturerItems = manufacturerRepository.findById(itemDTO.getManufacturerItems())
+//                    .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "manufacturerItems not found"));
+//            item.setManufacturerItems(manufacturerItems);
+//        }
+//        return Item.builder().name(itemDTO.getName());
+//    }
 }

@@ -1,6 +1,7 @@
 package io.sam.project.service;
 
 import io.sam.project.models.Manufacturer;
+import io.sam.project.models.dtos.ItemDTO;
 import io.sam.project.models.dtos.ManufacturerDTO;
 import io.sam.project.repository.ManufacturerRepository;
 import lombok.RequiredArgsConstructor;
@@ -46,6 +47,8 @@ public class ManufacturerService {
     public void delete(final Long id) {
         manufacturerRepository.deleteById(id);
     }
+
+//    public ItemDTO getItems()
 
     private ManufacturerDTO mapToDTO(Manufacturer manufacturer,
                                      ManufacturerDTO manufacturerDTO) {
